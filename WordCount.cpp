@@ -1,6 +1,7 @@
 // WordCount.cpp
 
 #include "WordCount.h"
+#include <set>
 
 using namespace std;
 
@@ -157,11 +158,11 @@ std::string WordCount::makeValidWord(std::string word) {
 void WordCount::dumpWordsSortedByWord(std::ostream &out) const {
 	set<pair<int, pair<string, int>>, greater<pair<int, pair<string, int>>>> wordList;
 
-	for(int i = 0; i < CAPACITY; i++){
-		for(int j = 0; j < table[i].size(); i++){
+	for(size_t i = 0; i < CAPACITY; i++){
+		for(size_t j = 0; j < table[i].size(); i++){
 			string word = table[i][j].first;
 			int accumulator = 0;
-			for(int i = 0; i < word.length(); i++){
+			for(size_t i = 0; i < word.length(); i++){
 				accumulator += word.at(i);
 			}
 			wordList.insert({accumulator, table[i][j]});
@@ -176,11 +177,11 @@ void WordCount::dumpWordsSortedByWord(std::ostream &out) const {
 void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const {
 	set<pair<pair<int,int>, pair<string, int>>> wordList;
 
-	for(int i = 0; i < CAPACITY; i++){
-		for(int j = 0; j < table[i].size(); i++){
+	for(size_t i = 0; i < CAPACITY; i++){
+		for(size_t j = 0; j < table[i].size(); i++){
 			string word = table[i][j].first;
 			int accumulator = 0;
-			for(int i = 0; i < word.length(); i++){
+			for(size_t i = 0; i < word.length(); i++){
 				accumulator += word.at(i);
 			}
 			wordList.insert({{table[i][j].second, accumulator}, table[i][j]});
