@@ -174,11 +174,6 @@ void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const {
 
 	for(size_t i = 0; i < CAPACITY; i++){
 		for(size_t j = 0; j < table[i].size(); i++){
-			string word = table[i][j].first;
-			int accumulator = 0;
-			for(size_t i = 0; i < word.length(); i++){
-				accumulator += word.at(i);
-			}
 			wordList.insert({table[i][j].second, table[i][j].first});
 		}
 	}
@@ -193,7 +188,7 @@ void WordCount::addAllWords(std::string text) {
 	while(find < text.length()){
 		incrWordCount(makeValidWord(text.substr(0, find + 1)));
 		text.erase(0, find + 1);
-		find = text.find_first_of(" ,\n\t");
+		find = text.find_first_of(" \n\t");
 		if(find == string::npos){
 			incrWordCount(makeValidWord(text.substr(0)));
 		}

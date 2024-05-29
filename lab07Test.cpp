@@ -7,7 +7,7 @@ int main(){
     WordCount book = WordCount();
 
     cout << "Basic Tests" << endl << "____________" << endl;
-    book.addAllWords("----&&8T^^##$$his  ,, th^^7&32is   \t\t  \n is    is **is a test  ,,\n\n\t, test test ,,,\n\ntest sente32923nc**9902e---\t\t");
+    book.addAllWords("----&&8T^^##$$his  ,, th^^7&32is\nis    is **is a test  ,,\n\n\t, test test ,,,\n\ntest sente32923nc**9902e---\t\t");
     ASSERT_EQUALS(2, book.getWordCount("this"));
     ASSERT_EQUALS(3, book.getWordCount("is"));
     ASSERT_EQUALS(1, book.getWordCount("a"));
@@ -44,4 +44,9 @@ int main(){
     book.dumpWordsSortedByOccurence(cout);
     cout << endl << "Sorted By Word" << endl;
     book.dumpWordsSortedByWord(cout);
+
+    book.addAllWords("\n\n\nNewLIne\n\n\n\n Testing\n\n\n\nWith\n\n\nNewline");
+    ASSERT_EQUALS(1, book.getWordCount("testing"));
+    ASSERT_EQUALS(2, book.getWordCount("newline"));
+    ASSERT_EQUALS(1, book.getWordCount("with"));
 }
