@@ -184,7 +184,7 @@ void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const {
 }
 
 void WordCount::addAllWords(std::string text) {
-	size_t find = text.find_first_of(" ,\n\t");
+	size_t find = text.find_first_of(" \n\t");
 	while(find < text.length()){
 		incrWordCount(makeValidWord(text.substr(0, find + 1)));
 		text.erase(0, find + 1);
