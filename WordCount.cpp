@@ -156,26 +156,21 @@ std::string WordCount::makeValidWord(std::string word) {
 }
 
 void WordCount::dumpWordsSortedByWord(std::ostream &out) const {
-	set<pair<int, pair<string, int>>, greater<pair<int, pair<string, int>>>> wordList;
+	set<pair<string, int>, greater<pair<string, int>>> wordList;
 
 	for(size_t i = 0; i < CAPACITY; i++){
 		for(size_t j = 0; j < table[i].size(); i++){
-			string word = table[i][j].first;
-			int accumulator = 0;
-			for(size_t i = 0; i < word.length(); i++){
-				accumulator += word.at(i);
-			}
-			wordList.insert({accumulator, table[i][j]});
+			wordList.insert(table[i][j]);
 		}
 	}
 	for(auto word : wordList){
-		out << word.second.first << "," << word.second.second << endl;
+		out << word.first << "," << word.second << endl;
 	}
 	return;
 }
 
 void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const {
-	set<pair<pair<int,int>, pair<string, int>>> wordList;
+	set<pair<int, string>> wordList;
 
 	for(size_t i = 0; i < CAPACITY; i++){
 		for(size_t j = 0; j < table[i].size(); i++){
@@ -184,11 +179,11 @@ void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const {
 			for(size_t i = 0; i < word.length(); i++){
 				accumulator += word.at(i);
 			}
-			wordList.insert({{table[i][j].second, accumulator}, table[i][j]});
+			wordList.insert({table[i][j].second, table[i][j].first});
 		}
 	}
 	for(auto word : wordList){
-		out << word.second.first << "," << word.second.second << endl;
+		out << word.second << "," << word.first << endl;
 	}
 	return;
 }

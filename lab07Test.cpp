@@ -7,7 +7,7 @@ int main(){
     WordCount book = WordCount();
 
     cout << "Basic Tests" << endl << "____________" << endl;
-    book.addAllWords("T^^##$$his  ,, th^^7&32is    is    is **is a test  ,,, test test ,,,\n\ntest sentence");
+    book.addAllWords("----&&8T^^##$$his  ,, th^^7&32is   \t\t  \n is    is **is a test  ,,\n\n\t, test test ,,,\n\ntest sente32923nc**9902e---\t\t");
     ASSERT_EQUALS(2, book.getWordCount("this"));
     ASSERT_EQUALS(3, book.getWordCount("is"));
     ASSERT_EQUALS(1, book.getWordCount("a"));
