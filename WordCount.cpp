@@ -159,7 +159,7 @@ void WordCount::dumpWordsSortedByWord(std::ostream &out) const {
 	set<pair<string, int>, greater<pair<string, int>>> wordList;
 
 	for(size_t i = 0; i < CAPACITY; i++){
-		for(size_t j = 0; j < table[i].size(); i++){
+		for(size_t j = 0; j < table[i].size(); j++){
 			wordList.insert(table[i][j]);
 		}
 	}
@@ -173,7 +173,7 @@ void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const {
 	set<pair<int, string>> wordList;
 
 	for(size_t i = 0; i < CAPACITY; i++){
-		for(size_t j = 0; j < table[i].size(); i++){
+		for(size_t j = 0; j < table[i].size(); j++){
 			wordList.insert({table[i][j].second, table[i][j].first});
 		}
 	}
